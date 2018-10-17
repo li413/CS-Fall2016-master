@@ -1,0 +1,25 @@
+
+Chenyang Li
+
+
+Q1)
+Peripheral base address can lead us to locate transfer data.
+It points to SPIx->DR.
+
+Q2)
+DMA will change the address to next avalable data slot.
+
+Q3)
+It will let the reset button work and to make sure the communication is complete.
+
+Q4)
+It's not efficient to use xchng_datablock function to transfer that less than 4 bytes
+
+Q5)
+Because it will increase the audio speed
+
+Difficulties:
+In this lab, the difficulities for us is to use nonchunt to change the audio
+
+What I learned:
+I learned how to use the board to play audio.

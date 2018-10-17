@@ -1,0 +1,124 @@
+/* main.c ---
+*
+* Filename: main.c
+* Description:
+* Author:
+* Maintainer:
+* Created: Thu Jan 10 11:23:43 2013
+/* Code: */
+
+#include <stm32f30x.h> // Pull in include files for F30x standard drivers
+#include <f3d_uart.h>
+#include <f3d_user_btn.h>
+#include <f3d_lcd_sd.h>
+#include <f3d_i2c.h>
+#include <f3d_accel.h>
+#include <f3d_mag.h>
+#include <stdio.h>
+#include <math.h> //atan sqrt and pow(value, power)
+
+#define PI 3.14159265
+
+#define TIMER 20000
+
+void delay(int count) {
+  while (count-- > 0) {
+    int i = 10000; 
+    while (i-- > 0) {
+      asm("nop");/* This stops it optimizing code out */
+    }
+  }
+}
+
+int main(void) {
+   setvbuf(stdin, NULL, _IONBF, 0);
+   setvbuf(stdout, NULL, _IONBF, 0);
+   setvbuf(stderr, NULL, _IONBF, 0);
+
+  // Set up your inits before you go ahead
+   f3d_led_init();
+   delay(10);
+   f3d_i2c1_init();
+   delay(10);
+   f3d_accel_init();
+   delay(10);
+   f3d_mag_init();
+   delay(10);
+
+   float data[3];
+
+   float pitch;
+   float roll;
+   // float yaw;
+
+   float magX;
+   float magY;
+   float magZ;
+   float Heading;
+   
+   while(1) {
+     f3d_accel_read(data);
+     pitch = atan(data[0]/(sqrt(pow(data[1],2) + pow(data[2], 2)))); // x axis rotation
+     roll = atan(data[1]/(sqrt(pow(data[0],2) + pow(data[2], 2)))); // y axis rotation
+     // yaw = atan(data[2]/(sqrt(pow(data[1],2) + pow(data[0], 2)))); // z axis rotation
+
+     f3d_mag_read(data);
+     magX = data[0]*cos(pitch)+data[2]*sin(pitch); // mag sensor X
+     magY = data[0]*sin(roll)*sin(pitch)+data[1]*cos(roll)-data[2]*sin(roll)*cos(pitch); // mag sensor Y
+     magZ = -data[0]*cos(roll)*sin(pitch)+data[1]*sin(roll)+data[2]*cos(roll)*cos(pitch); // mag sensor Z
+     
+     // Getting Heading
+     if (magX > 0 && magY >= 0){
+       Heading = atan(magY/magX);
+     } 
+     if (magX < 0){
+       Heading = PI + atan(magY/magX);
+     } 
+     if (magX > 0 && magY <= 0){
+       Heading = 2*PI + atan(magY/magX);
+     } 
+     if (magX == 0 && magY < 0){
+       Heading = PI/2;
+     } 
+     if (magX == 0 && magY > 0){
+       Heading = PI*1.5;
+     } 
+   
+     printf("%f\n", Heading);
+
+     
+     // Compass Lights
+     if (Heading < 0.5 || Heading > 5.75) {
+       f3d_led_off(0);
+       f3d_led_off(2);
+       f3d_led_on(1);
+     }
+     if (Heading < 1.5 && Heading >= 0.5) {
+       f3d_led_off(7);
+       f3d_led_off(1);
+       f3d_led_on(0);
+     }
+     if (Heading < 2.5 && Heading >= 1.5) {
+       f3d_led_off(0);
+       f3d_led_off(6);
+       f3d_led_on(7);
+     }
+     if (Heading < 3.5 && Heading >= 2.5) {
+       f3d_led_off(7);
+       f3d_led_off(5);
+       f3d_led_on(6);
+     }
+     
+   }
+}
+
+#ifdef USE_FULL_ASSERT
+void assert_failed(uint8_t* file, uint32_t line) {
+/* Infinite loop */
+/* Use GDB to find out why we're here */
+  while (1);
+}
+#endif
+
+/* main.c ends here */
+

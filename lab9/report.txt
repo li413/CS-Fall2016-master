@@ -1,0 +1,15 @@
+Chenyang Li
+
+
+1) Macros use setting the CS to high and low for the SD card. Set the CS high to communicate, and to stop.
+
+2) Pt the fucntion into a while loop. The advantage is more accurate than before.
+
+
+3) DMA allows the processor to do other things at once but now it cannot. So that would optimize the processor efficiency during image display. 
+
+4) The file allocation table locates the files within a particular disk and puts together all the fragmented files. Because it puts togethers fragments, an incorrect table entry may override a new file, and correupt it. Essentially losing the data.
+
+5) FAT16  allows 512 entries and the FAT32 enables the root directory to expand. 
+
+Difficulities: In this lab, the difficulity to me is that we do not know how to get image display application

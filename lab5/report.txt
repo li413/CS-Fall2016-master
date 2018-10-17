@@ -1,0 +1,17 @@
+
+Name: Chenyang Li
+
+1.  CS pin is used to signal to the slave when we start and end to transfer data.
+
+2. Because read/write functions to the gyro will assume that this pin is high after initialization. 
+
+f3d_gyro_read, f3d_gyro_write are set low to high.
+
+3. we should connect necessary wires correctly.
+
+4.Baud rate is 8 and frequency is 9.
+
+5.Yes slave need to be configured with the transmission speed before it can communicate with the master. It can satisfy  different communication requirements.
+
+What learnt: in this lab I do learnt how to use gdb to debug a function. We can set a break point in the function and see the output in each steps.
+The difficulty: in this lab is step 8. We have trouble seeting the axis. It is really challenge to make the lights on when we rotate the board.

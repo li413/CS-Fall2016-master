@@ -1,0 +1,20 @@
+Name: Chenyang Li Username: li413
+
+1.    2 connections 1 send 1receive.
+
+2.    It work on several functions at the same time and pin is used for input and output
+
+3.    Baud rate is the rate that information can be tansferred in a communication channel.
+
+4.    Newlib_stubs is a c language library so we really need it so we can use some functions.
+      printf() function is buildin function in the library, so if we do not have newlib_stubs,
+      we cannot use printf().
+
+5.    I can get a graph as feedback when there are some bugs or pauses. It is easier to see the
+      situations
+
+In this lab, I learned how to write getchar() and putchar() functions. And I can use serialT to 
+communicate with the board.
+
+The difficulity my partner and I encoutered is we don't know how to write the while loop in the main.c,
+so that we can count the words we typed.

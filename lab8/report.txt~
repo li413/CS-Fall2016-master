@@ -1,0 +1,28 @@
+Name: JUN WANG (wang314)
+Partner: Chenyang Li
+
+* Learn: What data does nunchuck returned; how to use these data and put them visualization.
+
+* Difficulties: It is hard to switch between visualization without the screen effect on each other. 
+
+*Questions:
+Q1) In previous labs, adding a peripheral has required pin initializations. Why were able to add the nunchuk without initializing anything?
+
+Because nunchuk is controlled through IC2.  
+
+
+Q2) What are the major differences between these two functions and what does that imply about communicating with the nunchuk?
+
+
+
+Q3) What do all of these variables correspond to in the nunchuk? Hint: It may be best to answer this question after the checkpoint
+jx - joystick x axis
+jy - joystick y axis
+ax - accelerometer x 
+ay - accelerometer y 
+az - accelerometer z 
+c - c button
+z - z button
+
+
+Q4) Explain the code above

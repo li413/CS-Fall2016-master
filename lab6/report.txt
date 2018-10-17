@@ -1,0 +1,15 @@
+Name: Chenyang Li
+
+1. Advantage: Using printf, you can easily see the whether led lights is on or not. 
+Disadvantage: we have delay function in it and it takes more time. 
+
+2. spiReadWrite function receives and reads data and then displays on the LCD. 
+
+3. LCD_CS_DEASSERT() sets the CS pin high, that postpones the action of the SPI master. It is also used in initializing f3d_lcd_init() to suspend communicating when initializing. 
+
+4. In glcdfont.c, the chars are stored as an unsigned 8bit String in ASCII and  use function f3d_lcd_drawChar() to changer it to pixels.
+
+5.f3d_lcd_fillScreen is faster than f3d_lcd_fillScreen2, which conflicts with the assumption. I do not know the reason.
+
+
+Difficulties: In this lab, the difficulty to me is to set the axis and initialize the pin at the beginning.

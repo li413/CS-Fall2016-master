@@ -1,0 +1,39 @@
+
+Chenyang Li
+
+Questions:
+1. 
+
+Because nunchuk is controlled through IC2.  
+
+
+2. 
+
+i2c1_read uses standard read/write. but nunchuk uses another version function
+
+nunchuk needs special data type
+
+
+
+3. 
+
+jx - joystick x axis
+jy - joystick y axis
+ax - accelerometer x 
+ay - accelerometer y 
+az - accelerometer z 
+c - c button
+z - z button
+
+
+4. 
+Switch cases:
+       2: z pressed, c not pressed
+       1: z not pressed, c pressed
+       0: z pressed , c pressed
+       3: z,c unpressed
+
+
+Difficulities: In this lab the difficulities to my partner and me is how to use screen to show the work.
+
+Learn: In I learned how to use gdb to debug and how to set the break and then continue.

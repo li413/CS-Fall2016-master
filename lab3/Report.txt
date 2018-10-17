@@ -1,0 +1,15 @@
+
+Chenyang Li
+
+1. STM32 which is ARM Cortex-M4
+
+2. GPIO stands for general-purpose that is used to read values from or write values to pins on the chip boundaries 
+
+3. The delay function is accurate even if there is no parameter. The delay function controls the speed of led flash.
+
+4. Port E Pin 11 and  Port E Pin 15
+
+5. GPIO_Pin, GPIO_OType,GPIO_Mode,GPIO_Speed,GPIO_Pupd
+
+
+The difficulties for me in this lab is to control the button. Write a function that when I push the button, the light on. At the beginning I have no idea about the function in the led.c. I know I should use the if statement but I have to learn how to intialize the GPIO structure and the GPIO functions.

@@ -1,0 +1,50 @@
+Name: Chenyang Li
+Username: li413
+
+Q1:
+
+
+There are 14 pins totally:
+
+Vdd_IO, SCL, SDA, INT2, INT1, C1, GND, Reserved, DRDY, Reserved, Reserved, SETP, SETC, and Vdd
+
+accelerometer/magnetometer requires 2.16 Volts. It is a small black rectangle chip located near the top right.
+
+
+Question 2: 
+
+
+We write to the accelerometer/magnetometer to set up the settings which determines how we receive data. 
+
+In the f3d_accel.c file: 
+normal power mode, all axis enable, 
+continuous update, little endian, 2G Sensitivity, high resolution mode, 
+HPF cutoff 16, high pass filter normal mode, AO1/AO1 disabled.
+
+In the f3d_mag.c file:
+temp sensor disabled, 30Hz output rate, 
++/- 8.1 gauss full scale, continuous conversion
+
+
+Question 3:
+
+
+Those lines takes the raw data out of the buffer, sets it in a raw_data array. 
+Then puts it in a accel_data array after divided by 1000 so we can use it.
+
+
+Question 4:
+
+
+It might be necessary to have tilt compensatation with your compass because if the compass is not flat, 
+it will give the wrong direction.
+
+Dificulties:
+            In this lab, the difficulities to my partner and me are getting the Tilt Angle Visualization
+            and Compass visualization.
+            We use the led light to set the compass visualizations and it is difficult to set the direction.
+            In the tilt angle visualization we did our work but it is difficult to set two bars to show the 
+            pitch and roll
+
+Learned:
+            In this lab, I also learned how to initialize the pins. I also learned how to set the range to make the campass.
